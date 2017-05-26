@@ -8,9 +8,9 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\CoreBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
-use Sonata\BlockBundle\Block\BaseBlockService;
+use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 
-class GraphsBlockService extends BaseBlockService
+class GraphsBlockService extends AbstractBlockService
 {
     public function getName()
     {
@@ -20,6 +20,7 @@ class GraphsBlockService extends BaseBlockService
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
+            'url'      => false,
             'title' => 'App Graphs',
             'template' => '@App/Admin/Block/app-graphs.html.twig',
             'metric_endpoint' => 'https://graphite.monitoring',
